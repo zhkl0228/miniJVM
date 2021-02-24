@@ -115,6 +115,19 @@ int main(int argc, char **argv) {
 //        arraylist_push_back(java_para,"../../binary/res/BpDeepTest.java");
 
     }
+    if(!bootclasspath) {
+        char path[256];
+        memcpy(path, argv[0], strlen(argv[0]));
+        char *split = path;
+        char *tmp = NULL;
+        while((tmp = strchr(split + 1, '/'))) {
+            split = tmp;
+        }
+        split[0] = 0;
+        char *buf = (char *) calloc(1, 256);
+        sprintf(buf, "%s%s", path, "/../lib/rt.jar");
+        bootclasspath = buf;
+    }
     MiniJVM *jvm = jvm_create();
     if(jvm!=NULL) {
         jvm->jdwp_enable = jdwp;
