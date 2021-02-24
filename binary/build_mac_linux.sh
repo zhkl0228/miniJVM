@@ -27,7 +27,7 @@ CSRC="../minijvm/c"
 
 SRCLIST=`find ${CSRC}  -type f  -name "*.c" -not -path "${CSRC}/utils/sljit/*"  -not -path "${CSRC}/cmake-*" -not -path "${CSRC}/.*"`
 #echo ${SRCLIST}
-${GCC}  -o mini_jvm -I${CSRC}/jvm -I${CSRC}/utils/ -I${CSRC}/utils/sljit/ -I${CSRC}/utils/https/ -I${CSRC}/utils/https/mbedtls/include/ -lpthread -lm -ldl  $SRCLIST ${CSRC}/utils/sljit/sljitLir.c -O2 -fno-rtti -fno-exceptions
+${GCC}  -o mini_jvm -I${CSRC}/jvm -I${CSRC}/utils/ -I${CSRC}/utils/sljit/ -I${CSRC}/utils/https/ -I${CSRC}/utils/https/mbedtls/include/ -lpthread -lm -ldl  $SRCLIST ${CSRC}/utils/sljit/sljitLir.c -O2 -fno-exceptions
 
 
 echo "compile glfw_gui"
