@@ -5,7 +5,6 @@ echo "Requirement: gcc "
 GCC=gcc
 OSNAME="Darwin"
 UNAME=`uname -a`
-CFLAGS="-O2 -fno-exceptions"
 
 if [[ $UNAME == *$OSNAME* ]] 
 then
@@ -13,12 +12,13 @@ then
     BINDIR="macos"
     LIBDIR="mac"
     LIBFILE="libgui.dylib"
+    CFLAGS="-O2 -fno-exceptions"
 else
     echo "Linux"
     BINDIR="centos_x64"
     LIBDIR="centos_x64"
     LIBFILE="libgui.so"
-    CFLAGS += -lrt
+    CFLAGS="-O2 -fno-exceptions -lrt"
 fi
 
 echo "compile mini_jvm"
